@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Wedding</title>
+
+<!-- PANGGIL CSS -->
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<h2>💍 Happy Wedding 💍</h2>
+<h3>Nikmatul Maula & Ali Wafa 💍❤️</h3>
+<p>Selamat atas pernikahan kalian! 💍✨ 
+<br> Semoga cinta yang kalian ikat hari ini tumbuh semakin kuat seiring waktu, 
+<br> dipenuhi dengan kebahagiaan, pengertian, dan kebersamaan yang hangat. 
+<br> Semoga setiap langkah yang kalian tempuh bersama selalu diberkahi, 
+<br> dan rumah tangga yang kalian bangun menjadi tempat penuh cinta, tawa, dan kedamaian. 
+<br> Selamat menempuh hidup baru — semoga selamanya saling mencintai dan menjaga. ❤️</p>
+<div class="photo-container" id="photo"></div>
+
+<audio autoplay loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg">
+</audio>
+
+
+<script>
+
+const container = document.getElementById("photo");
+const rows = 5;
+const cols = 5;
+
+const pieceWidth = 300 / cols;
+const pieceHeight = 400 / rows;
+
+const images = [
+    "images/maula1.jpeg",
+    "images/maula2.jpeg",
+    "images/maula3.jpeg",
+    "images/maula4.jpeg",
+    "images/maula5.jpeg",
+    "images/maula6.jpeg",
+    "images/maula7.jpeg"
+];
+
+let currentIndex = 0;
+
+function showImage(imageURL) {
+    container.innerHTML = "";
+    let pieces = [];
+
+    for (let y = 0; y < rows; y++) {
+        for (let x = 0; x < cols; x++) {
+            let piece = document.createElement("div");
+            piece.classList.add("piece");
+
+            piece.style.width = pieceWidth + "px";
+            piece.style.height = pieceHeight + "px";
+
+            piece.style.left = (x * pieceWidth) + "px";
+            piece.style.top = (y * pieceHeight) + "px";
+
+            piece.style.backgroundImage = `url(${imageURL})`;
+            piece.style.backgroundPosition =
+                (-x * pieceWidth) + "px " + (-y * pieceHeight) + "px";
+
+            container.appendChild(piece);
+            pieces.push(piece);
+        }
+    }
+
+    pieces.forEach((piece) => {
+        setTimeout(() => {
+            piece.classList.add("show");
+        }, Math.random() * 1500);
+    });
+}
+
+function startSlideshow() {
+    showImage(images[currentIndex]);
+
+    setTimeout(() => {
+        currentIndex = (currentIndex + 1) % images.length;
+        startSlideshow();
+    }, 4000);
+}
+
+startSlideshow();
+
+// bunga
+function createFlower() {
+    const flower = document.createElement("div");
+    flower.classList.add("flower");
+    flower.innerHTML = "🌸";
+    flower.style.left = Math.random() * window.innerWidth + "px";
+    flower.style.animationDuration = (3 + Math.random() * 5) + "s";
+    document.body.appendChild(flower);
+    setTimeout(() => flower.remove(), 8000);
+}
+setInterval(createFlower, 300);
+
+// love
+function createLove() {
+    const love = document.createElement("div");
+    love.classList.add("love");
+    love.innerHTML = "❤️";
+    love.style.left = Math.random() * window.innerWidth + "px";
+    love.style.animationDuration = (3 + Math.random() * 5) + "s";
+    document.body.appendChild(love);
+    setTimeout(() => love.remove(), 8000);
+}
+setInterval(createLove, 500);
+
+function createCircle() {
+    const circle = document.createElement("div");
+    circle.classList.add("circle");
+
+    const size = Math.random() * 80 + 20; // ukuran random
+    circle.style.width = size + "px";
+    circle.style.height = size + "px";
+
+    circle.style.left = Math.random() * window.innerWidth + "px";
+    circle.style.animationDuration = (5 + Math.random() * 5) + "s";
+
+    document.body.appendChild(circle);
+
+    setTimeout(() => circle.remove(), 10000);
+}
+
+setInterval(createCircle, 400);
+
+</script>
+
+</body>
+</html>
