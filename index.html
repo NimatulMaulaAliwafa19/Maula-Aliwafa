@@ -13,8 +13,8 @@
 <body>
 
 <h2>💍 Happy Wedding 💍</h2>
-<h3>Nikmatul Maula & Ali Wafa 💍❤️</h3>
-<p>Selamat atas pernikahan kalian! 💍✨ 
+<h3>Nikmatul Maula & Ali Wafa ❤️</h3>
+<p>Selamat atas pernikahan kalian! ✨ 
 <br> Semoga cinta yang kalian ikat hari ini tumbuh semakin kuat seiring waktu, 
 <br> dipenuhi dengan kebahagiaan, pengertian, dan kebersamaan yang hangat. 
 <br> Semoga setiap langkah yang kalian tempuh bersama selalu diberkahi, 
@@ -131,6 +131,11 @@ function createCircle() {
 }
 
 setInterval(createCircle, 400);
+
+const bgm = document.getElementById("bgm");
+
+document.body.addEventListener("click", () => {bgm.play();
+});
 
 </script>
 
